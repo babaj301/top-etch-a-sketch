@@ -1,20 +1,28 @@
 .container {
-  height: 640px;
-  width: 640px;
-  border: black solid 2px;
+  height: 500px;
+  width: 500px;
+  border: black solid 1px;
   display: flex;
   align-items: stretch;
   flex-direction: column;
 }
 
 .box {
-  border: 0.5px solid;
-  height: 30px;
+  /* border: 0.5px solid; */
+  /* height: 12px; */
   display: flex;
+  flex: 1;
 }
 
 .inner {
   border: 0.5px solid;
-  height: 30px;
+  /* height: 12px; */
+  flex: 1;
+}
+
+.black {
+  background-color: black;
+  border: 0.5px solid;
+  /* height: 12px; */
   flex: 1;
 }
