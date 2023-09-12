@@ -1,29 +1,51 @@
-// const grid = document.createElement("div");
-// grid.classList.add("div-group");
-const container = document.querySelector(".container");
+const array = [16, 25, 36];
+let value = array[0];
 
-for (let i = 1; i < 16; i++) {
-  const grid = document.createElement("div");
-  grid.classList.add(`box`);
-  container.appendChild(grid);
+const container = document.querySelector(".container");
+const reduce = document.querySelector(".reduce");
+const increase = document.querySelector(".increase");
+
+function makeGrid(n) {
+  for (let i = 1; i < n; i++) {
+    const grid = document.createElement("div");
+    grid.classList.add(`box`);
+    container.appendChild(grid);
+  }
+
+  const grids = document.querySelectorAll("div");
+  grids.forEach((grid) => {
+    for (let i = 1; i < n; i++) {
+      const div = document.createElement("div");
+      div.classList.add("inner");
+      grid.appendChild(div);
+    }
+  });
+
+  const divs = document.querySelectorAll(".inner");
+
+  divs.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+      div.classList.add("black");
+    });
+  });
 }
 
-const grids = document.querySelectorAll("div");
-grids.forEach((grid) => {
-  for (let i = 1; i < 16; i++) {
-    const div = document.createElement("div");
-    div.classList.add("inner");
-    grid.appendChild(div);
-  }
+function clearGrid() {
+  container.innerHTML = "";
+}
+
+reduce.addEventListener("click", (e) => {
+  e.stopPropagation();
+  clearGrid();
+  value = array[array.indexOf(value) - 1];
+  console.log(value);
+  makeGrid(value);
 });
 
-const divs = document.querySelectorAll(".inner");
-console.log(divs);
-
-divs.forEach((div) => {
-  div.addEventListener("mouseover", () => {
-    div.classList.add("black");
-  });
+increase.addEventListener("click", (e) => {
+  e.stopPropagation();
+  clearGrid();
+  value = array[array.indexOf(value) + 1];
+  console.log(value);
+  makeGrid(value);
 });
-
-
